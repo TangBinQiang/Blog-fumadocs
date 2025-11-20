@@ -2,19 +2,76 @@
 title: 中文适配
 description: Your first document
 ---
+
+
 测试文章
+
+```js
+console.log('Hello World');
+```
+
+```js title="My Title"
+console.log('Hello World');
+```
+
+
+
 ## 识别中文文章和路径
-``` tsx
+<Callout>Hello World</Callout>
+
+<Callout title="Title">Hello World</Callout>
+
+<Callout title="Title" type="error">
+  Hello World
+</Callout>
+import { HomeIcon } from 'lucide-react';
+
+<Cards>
+  <Card
+    href="https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating"
+    title="Fetching, Caching, and Revalidating"
+  >
+    Learn more about caching in Next.js
+  </Card>
+  <Card title="href is optional">Learn more about `fetch` in Next.js.</Card>
+  <Card icon={<HomeIcon />} href="/" title="Home">
+    You can include icons too.
+  </Card>
+</Cards>
+
+[My Link](https://github.github.com/gfm)
+This also works: https://github.github.com/gfm
+
+```tsx title="./app/docs/[[...slug]]/page.tsx" lineNumbers=1
 export default async function Page(props: PageProps<'/docs/[[...slug]]'>) {
   const params = await props.params;
-  const page = source.getPage(params.slug); // [\!code --]
-    const slug = Array.isArray(params.slug) // [\!code ++]
+  // [!code --]
+  const page = source.getPage(params.slug); 
+  // [!code ++:3]
+  const slug = Array.isArray(params.slug) 
     ? params.slug.map((s) => (s.includes('%') ? decodeURIComponent(s) : s))
     : params.slug;
   if (!page) notFound();
-
   const MDX = page.data.body;
+  // ...
 ```
+```java  title="HelloWorld.java"
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}
+```
+
+```java title="HelloWorld.java"
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!")
+    }
+}
+```
+
+
 ## 配置中文搜索
 ``` shell
 npm i @orama/tokenizers
@@ -40,3 +97,52 @@ export const { GET } = createFromSource(source, {
 测试文章
 
 Hello World
+
+
+```ts tab="Tab 1"
+console.log('A');
+```
+
+```ts tab="Tab 2"
+console.log('B');
+```
+### 666
+
+```js tab="<Rat /> Tab 1" 
+console.log('A');
+```
+
+```js tab="<Rocket /> Tab 2"
+console.log('B');
+```
+
+```js tab="<Code /> Tab 3"
+console.log('c');
+```
+---
+
+```js tabs
+console.log('No Tab');
+```
+```js tab="Only Tab"
+console.log('Only Tab');  
+```
+```js tab="Another Tab"
+console.log('Another Tab');
+```
+
+import { Step, Steps } from 'fumadocs-ui/components/steps';
+
+<Steps>
+<Step>
+
+### Hello World
+test step content 
+</Step>
+
+<Step>
+
+### Hello World
+
+</Step>
+</Steps>
